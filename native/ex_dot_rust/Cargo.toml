@@ -1,0 +1,16 @@
+[package]
+name = "ex_dot_rust"
+version = "0.1.0"
+edition = "2021"
+authors = ["Dr. Christian Geuer-Pollmann <chgeuer@microsoft.com>"]
+
+[lib]
+name = "ex_dot_rust"
+path = "src/lib.rs"
+crate-type = ["cdylib"]
+
+
+[dependencies]
+rustler = "0.31.0" 
+layout-rs = "0.1.1"
+#layout-rs = { version = "0.1.1", features = ["log"] }
