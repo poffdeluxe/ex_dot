@@ -3,6 +3,33 @@
 ```elixir
 Mix.install([
   {:libgraph, "~> 0.16.0"},
-  {:ex_dot_rust, "~> 0.1.0"}
+  {:kino, "~> 0.12.3"},
+  # {:ex_dot_rust, "~> 0.1.0"}
+  {:ex_dot_rust, github: "chgeuer/ex_dot_rust"}
 ])
+```
+
+## Render a DOT graph
+
+This demo uses the https://crates.io/crates/layout-rs crate (src: https://github.com/nadavrot/layout), wraps it using Rustler, and allows to convert text in [DOT Language](https://graphviz.org/doc/info/lang.html) to SVG.
+
+```elixir
+"""
+digraph R {
+  node [shape=record];
+
+  { rank=same rA sA tA }
+  { rank=same uB vB wB }
+
+
+   rA -> sA;
+   sA -> vB;
+   t  -> rA;
+   uB -> vB;
+   wB -> u;
+   wB -> tA;
+}
+"""
+|> DotSvg.dot_to_svg()
+|> Kino.Image.new(:svg)
 ```
