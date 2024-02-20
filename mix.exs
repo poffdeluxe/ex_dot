@@ -2,9 +2,9 @@ defmodule ExDotRust.MixProject do
   use Mix.Project
 
   @source_url "https://github.com/chgeuer/ex_dot_rust"
-  @version "0.1.3"
+  @version "0.1.0"
   @dev? String.ends_with?(@version, "-dev")
-  @force_build? System.get_env("RUSTLER_BUILD") in ["1", "true"]
+  @force_build? System.get_env("DOTSVG_BUILD") in ["1", "true"]
 
   def project do
     [
@@ -45,7 +45,8 @@ defmodule ExDotRust.MixProject do
   defp deps do
     [
       {:ex_doc, ">= 0.0.0", only: :dev, runtime: false},
-      {:rustler, "~> 0.31.0", runtime: false, optional: not (@dev? or @force_build?)},
+      {:rustler, "~> 0.31.0", optional: not (@dev? or @force_build?)},
+      #{:rustler, ">= 0.0.0", optional: true},
       {:rustler_precompiled, "~> 0.7.1"}
     ]
   end
