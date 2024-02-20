@@ -1,0 +1,8 @@
+# Convert DOT to SVG
+
+```elixir
+Mix.install([
+  {:libgraph, "~> 0.16.0"},
+  {:ex_dot_rust, "~> 0.1.0"}
+])
+```

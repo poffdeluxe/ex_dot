@@ -1,0 +1,58 @@
+name: Elixir CI
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+  workflow_dispatch:
+
+env:
+  DPAPI_BUILD: true
+  MIX_ENV: test
+
+jobs:
+  test:
+    strategy:
+      matrix:
+        include:
+          - otp_version: "26.0.2"
+            elixir_version: 1.15
+    runs-on: windows-2022
+    name: test
+    steps:
+      - uses: actions/checkout@v3
+      
+      - uses: actions/cache@v3
+        with:
+          path: |
+            # _build/test/lib/explorer/native/ex_dot_rust
+            ~/.cargo/bin/
+            ~/.cargo/registry/index/
+            ~/.cargo/registry/cache/
+            ~/.cargo/git/db/
+          key: test-native-${{ runner.os }}-${{ hashFiles('native/**/Cargo.lock') }}
+          restore-keys: |
+            test-native-${{ runner.os }}
+
+      - uses: erlef/setup-beam@v1
+        with:
+          otp-version: ${{ matrix.otp_version }}
+          elixir-version: ${{ matrix.elixir_version }}
+
+      - run: mix deps.get
+      - run: mix deps.compile
+      - name: Run tests
+        run: mix test --warnings-as-errors
+      - name: Compile once again but without optional deps
+        run: mix compile --force --warnings-as-errors --no-optional-deps
+
+  # format:
+  #   runs-on: windows-2022
+  #   name: mix format
+  #   steps:
+  #     - uses: actions/checkout@v3
+  #     - uses: erlef/setup-beam@v1
+  #       with:
+  #         otp-version: "26.0.2"
+  #         elixir-version: 1.15
+  #     - run: mix format --check-formatted
