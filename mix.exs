@@ -45,8 +45,7 @@ defmodule ExDotRust.MixProject do
   defp deps do
     [
       {:ex_doc, ">= 0.0.0", only: :dev, runtime: false},
-      {:rustler, "~> 0.31.0"}, optional: not (@dev? or @force_build?)},
-      #{:rustler, ">= 0.0.0", optional: true},
+      {:rustler, "~> 0.31.0", optional: not (@dev? or @force_build?)},
       {:rustler_precompiled, "~> 0.7.1"}
     ]
   end
