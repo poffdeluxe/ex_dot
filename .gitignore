@@ -24,4 +24,4 @@ ex_dot-*.tar
 
 # Temporary files, for example, from tests.
 /tmp/
-priv/native/*.dll
+/priv/
