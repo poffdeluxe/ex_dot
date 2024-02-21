@@ -67,9 +67,12 @@ jobs:
           workspaces: |
             native/ex_dot
 
+      # should I be using 
+      #     philss/rustler-precompiled-action@v1.1.3 or 
+      #     philss/rustler-precompiled-action@v1.1.0?
       - name: Build the project
         id: build-crate
-        uses: philss/rustler-precompiled-action@v1.1.3
+        uses: philss/rustler-precompiled-action@v1.1.0
         with:
           project-name: ex_dot
           project-version: ${{ env.PROJECT_VERSION }}

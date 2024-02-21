@@ -20,6 +20,7 @@ fn load(_env: Env, _: Term) -> bool {
     true
 }
 
+#[no_mangle]
 #[rustler::nif]
 fn nif_dot_to_svg<'a>(env: Env<'a>, input: Binary) -> Result<Term<'a>, Error> {
     let contents: &[u8] = input.as_slice();

@@ -17,7 +17,7 @@ jobs:
         include:
           - otp_version: "26.0.2"
             elixir_version: 1.15
-    runs-on: windows-2022
+    runs-on: ubuntu-latest
     name: test
     steps:
       - uses: actions/checkout@v3
