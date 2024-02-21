@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 env:
-  DOTSVG_BUILD: true
+  EX_DOT_RUST_BUILD: true
   MIX_ENV: test
 
 jobs:
@@ -25,7 +25,7 @@ jobs:
       - uses: actions/cache@v3
         with:
           path: |
-            # _build/test/lib/explorer/native/ex_dot_rust
+            # _build/test/lib/explorer/native/ex_dot
             ~/.cargo/bin/
             ~/.cargo/registry/index/
             ~/.cargo/registry/cache/

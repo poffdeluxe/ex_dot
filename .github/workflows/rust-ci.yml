@@ -16,13 +16,13 @@ jobs:
     strategy:
       matrix:
         manifest:
-          - native/ex_dot_rust/Cargo.toml
+          - native/ex_dot/Cargo.toml
     steps:
       - uses: actions/checkout@v3
       - uses: Swatinem/rust-cache@v2
         with:
           workspaces: |
-            native/ex_dot_rust
+            native/ex_dot
       - name: run rustfmt
         run: cargo fmt --manifest-path=${{ matrix.manifest }} --all -- --check
       - name: run clippy

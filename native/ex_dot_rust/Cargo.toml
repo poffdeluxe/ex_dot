@@ -1,14 +1,13 @@
 [package]
-name = "ex_dot_rust"
+name = "ex_dot"
 version = "0.1.0"
 edition = "2021"
 authors = ["Dr. Christian Geuer-Pollmann <chgeuer@microsoft.com>"]
 
 [lib]
-name = "ex_dot_rust"
+name = "ex_dot"
 path = "src/lib.rs"
 crate-type = ["cdylib"]
-
 
 [dependencies]
 rustler = "0.31.0" 

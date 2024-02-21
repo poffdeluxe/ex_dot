@@ -1,4 +1,4 @@
-defmodule DotSvg.Native do
+defmodule Dot.Native do
   @moduledoc false
 
   mix_config = Mix.Project.config()
@@ -7,12 +7,12 @@ defmodule DotSvg.Native do
   mode = if Mix.env() in [:dev, :test], do: :debug, else: :release
 
   # use Rustler,
-  #   otp_app: :ex_dot_rust,
-  #   crate: "ex_dot_rust"
+  #   otp_app: :ex_dot,
+  #   crate: "ex_dot"
 
   use RustlerPrecompiled,
-    otp_app: :ex_dot_rust,
-    crate: "ex_dot_rust",
+    otp_app: :ex_dot,
+    crate: "ex_dot",
     base_url: "#{github_url}/releases/download/v#{version}",
     version: version,
     targets: ~w(
@@ -25,7 +25,7 @@ defmodule DotSvg.Native do
     ),
     nif_versions: ["2.15"],
     mode: mode,
-    force_build: System.get_env("DOTSVG_BUILD") in ["1", "true"]
+    force_build: System.get_env("EX_DOT_RUST_BUILD") in ["1", "true"]
 
   def nif_dot_to_svg(_dot_string), do: :erlang.nif_error(:nif_not_loaded)
 end

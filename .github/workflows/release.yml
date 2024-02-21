@@ -65,19 +65,19 @@ jobs:
           prefix-key: v0-precomp
           shared-key: ${{ matrix.job.target }}-${{ matrix.nif }}
           workspaces: |
-            native/ex_dot_rust
+            native/ex_dot
 
       - name: Build the project
         id: build-crate
         uses: philss/rustler-precompiled-action@v1.1.3
         with:
-          project-name: ex_dot_rust
+          project-name: ex_dot
           project-version: ${{ env.PROJECT_VERSION }}
           target: ${{ matrix.job.target }}
           nif-version: ${{ matrix.nif }}
           use-cross: ${{ matrix.job.use-cross }}
           cross-version: ${{ matrix.job.cross-version || 'from-source' }}
-          project-dir: "native/ex_dot_rust"
+          project-dir: "native/ex_dot"
           cargo-args: ${{ matrix.job.cargo-args }}
           variant: ${{ matrix.job.variant }}
 

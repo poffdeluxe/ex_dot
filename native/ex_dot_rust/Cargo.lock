@@ -12,7 +12,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "ex_dot_rust"
+name = "ex_dot"
 version = "0.1.0"
 dependencies = [
  "layout-rs",

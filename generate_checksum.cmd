@@ -1,1 +1,1 @@
-mix rustler_precompiled.download DotSvg.Native --all --print
+mix rustler_precompiled.download Dot.Native --all --print

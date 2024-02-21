@@ -1,14 +1,14 @@
 defmodule ExDotRust.MixProject do
   use Mix.Project
 
-  @source_url "https://github.com/chgeuer/ex_dot_rust"
+  @source_url "https://github.com/chgeuer/ex_dot"
   @version "0.1.0"
   @dev? String.ends_with?(@version, "-dev")
-  @force_build? System.get_env("DOTSVG_BUILD") in ["1", "true"]
+  @force_build? System.get_env("EX_DOT_RUST_BUILD") in ["1", "true"]
 
   def project do
     [
-      app: :ex_dot_rust,
+      app: :ex_dot,
       version: @version,
       elixir: "~> 1.15",
       start_permanent: Mix.env() == :prod,
@@ -18,10 +18,10 @@ defmodule ExDotRust.MixProject do
       package: package(),
       aliases: [
         "rust.lint": [
-          "cmd cargo clippy --manifest-path=native/ex_dot_rust/Cargo.toml -- -Dwarnings"
+          "cmd cargo clippy --manifest-path=native/ex_dot/Cargo.toml -- -Dwarnings"
         ],
         "rust.fmt": [
-          "cmd cargo fmt --manifest-path=native/ex_dot_rust/Cargo.toml --all"
+          "cmd cargo fmt --manifest-path=native/ex_dot/Cargo.toml --all"
         ]
         # "localstack.setup": ["cmd ./test/support/setup-localstack.sh"],
         # ci: ["format", "rust.fmt", "rust.lint", "test"]
@@ -45,7 +45,7 @@ defmodule ExDotRust.MixProject do
   defp deps do
     [
       {:ex_doc, ">= 0.0.0", only: :dev, runtime: false},
-      {:rustler, "~> 0.31.0", optional: not (@dev? or @force_build?)},
+      {:rustler, "~> 0.31.0"}, optional: not (@dev? or @force_build?)},
       #{:rustler, ">= 0.0.0", optional: true},
       {:rustler_precompiled, "~> 0.7.1"}
     ]
@@ -53,7 +53,7 @@ defmodule ExDotRust.MixProject do
 
   defp docs do
     [
-      main: "DotSvg",
+      main: "Dot",
       source_ref: "v#{@version}",
       source_url: @source_url,
       extras: ["demo.livemd"]
@@ -62,7 +62,7 @@ defmodule ExDotRust.MixProject do
 
   defp package do
     [
-      name: "ex_dot_rust",
+      name: "ex_dot",
       files: ~w(lib native checksum-*.exs mix.exs README.md LICENSE),
       licenses: ["Apache-2.0"],
       links: %{
