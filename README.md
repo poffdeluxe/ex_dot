@@ -13,7 +13,7 @@ by adding `ex_dot` to your list of dependencies in `mix.exs`:
 ```elixir
 def deps do
   [
-    #{:ex_dot, github: "chgeuer/ex_dot"} # If you do this, you must set the environment variable EX_DOT_RUST_BUILD=true
+    #{:ex_dot, github: "chgeuer/ex_dot"} # If you do this, you must set the environment variable EX_DOT_BUILD=true
     {:ex_dot, "~> 0.1.0"}
   ]
 end
@@ -22,7 +22,33 @@ Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_do
 
 ## Local build 
 
-You must set the environment variable `EX_DOT_RUST_BUILD` to `true`, otherwise it will try to pull the [`rustler_precompiled`](https://github.com/philss/rustler_precompiled) bits.
+You must set the environment variable `EX_DOT_BUILD` to `true`, otherwise it will try to pull the [`rustler_precompiled`](https://github.com/philss/rustler_precompiled) bits.
 
 ## Using it in LiveBook
 
+```elixir
+Mix.install([
+  {:libgraph, "~> 0.16.0"},
+  {:kino, "~> 0.12.3"},
+  {:ex_dot, "~> 0.1.0"}
+])
+
+"""
+digraph R {
+  node [shape=record];
+
+  { rank=same rA sA tA }
+  { rank=same uB vB wB }
+
+
+   rA -> sA;
+   sA -> vB;
+   t  -> rA;
+   uB -> vB;
+   wB -> u;
+   wB -> tA;
+}
+"""
+|> Dot.to_svg()
+|> Kino.Image.new(:svg)
+```

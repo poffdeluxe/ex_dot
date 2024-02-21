@@ -33,6 +33,6 @@ digraph R {
    wB -> tA;
 }
 """
-|> DotSvg.dot_to_svg()
+|> Dot.to_svg()
 |> Kino.Image.new(:svg)
 ```

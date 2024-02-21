@@ -6,10 +6,7 @@ defmodule Dot.Native do
   github_url = mix_config[:package][:links]["GitHub"]
   mode = if Mix.env() in [:dev, :test], do: :debug, else: :release
 
-  # use Rustler,
-  #   otp_app: :ex_dot,
-  #   crate: "ex_dot"
-
+  # use Rustler, otp_app: :ex_dot, crate: "ex_dot"
   use RustlerPrecompiled,
     otp_app: :ex_dot,
     crate: "ex_dot",
@@ -25,7 +22,7 @@ defmodule Dot.Native do
     ),
     nif_versions: ["2.15"],
     mode: mode,
-    force_build: System.get_env("EX_DOT_RUST_BUILD") in ["1", "true"]
+    force_build: System.get_env("EX_DOT_BUILD") in ["1", "true"]
 
   def nif_dot_to_svg(_dot_string), do: :erlang.nif_error(:nif_not_loaded)
 end

@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 env:
-  EX_DOT_RUST_BUILD: true
+  EX_DOT_BUILD: true
   MIX_ENV: test
 
 jobs:

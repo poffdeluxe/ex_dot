@@ -1,4 +1,4 @@
 #!/bin/bash
 
-EX_DOT_RUST_BUILD=true
+EX_DOT_BUILD=true
 mix compile
