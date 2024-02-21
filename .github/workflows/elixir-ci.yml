@@ -15,9 +15,9 @@ jobs:
     strategy:
       matrix:
         include:
-          - otp_version: "26.0.2"
+          - otp_version: ['26']
             elixir_version: 1.15
-    runs-on: ubuntu-latest
+    runs-on: windows-2022 # ubuntu-latest
     name: test
     steps:
       - uses: actions/checkout@v3
