@@ -47,4 +47,3 @@ fn nif_dot_to_svg<'a>(env: Env<'a>, input: Binary) -> Result<Term<'a>, Error> {
 }
 
 rustler::init!("Elixir.Dot.Native", [nif_dot_to_svg], load = load);
-
