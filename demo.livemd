@@ -1,4 +1,4 @@
-<!-- livebook:{"persist_outputs":true} -->
+<!-- livebook:{"app_settings":{"access_type":"public","output_type":"rich","slug":"dot"}} -->
 
 # Convert DOT to SVG
 
@@ -6,7 +6,8 @@
 Mix.install([
   {:libgraph, "~> 0.16.0"},
   {:kino, "~> 0.12.3"},
-  {:ex_dot, "~> 0.1.0"}
+  {:ex_dot, "~> 0.1.0"},
+  {:req, "~> 0.4.11"}
 ])
 ```
 
@@ -15,22 +16,29 @@ Mix.install([
 This demo uses the https://crates.io/crates/layout-rs crate (src: https://github.com/nadavrot/layout), wraps it using Rustler, and allows to convert text in [DOT Language](https://graphviz.org/doc/info/lang.html) to SVG.
 
 ```elixir
-"""
-digraph R {
-  node [shape=record];
+render = fn file ->
+  %Req.Response{status: 200, body: dot_file} =
+    Req.get!("https://raw.githubusercontent.com/nadavrot/layout/master/inputs/#{file}")
 
-  { rank=same rA sA tA }
-  { rank=same uB vB wB }
+  dot_file
+  |> Dot.to_svg()
+  |> Kino.Image.new(:svg)
+end
 
+file_selector =
+  Kino.Input.select(
+    "Please select the file",
+    [
+      "1", "2", "3", "4", "5", "6", "7", "8", "9",
+      "bk", "diamond", "ella", "expr", "heb", "noa",
+      "prof", "sched0", "sched1", "self", "small"
+    ]
+    |> Enum.map(fn u -> {"#{u}.dot", u} end)
+  )
+```
 
-   rA -> sA;
-   sA -> vB;
-   t  -> rA;
-   uB -> vB;
-   wB -> u;
-   wB -> tA;
-}
-"""
-|> Dot.to_svg()
-|> Kino.Image.new(:svg)
+<!-- livebook:{"reevaluate_automatically":true} -->
+
+```elixir
+render.(Kino.Input.read(file_selector))
 ```
