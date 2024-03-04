@@ -4,6 +4,7 @@
 
 It is a tiny ([Rustler](https://github.com/rusterlium/rustler)-based) wrapper around the [`layout-rs`](https://crates.io/crates/layout-rs). I initially used a local copy of `dot.exe` from the [Graphviz](https://graphviz.org/) package, and launched `dot` using [rambo](https://github.com/jayjun/rambo). However, I didn't want to spin up a console executable for each conversion, so looked for alternatives. Luckily, I found [`nadavrot/layout`](ttps://github.com/nadavrot/layout), which seems to do what I wanted. *I haven't checked whether that Rust crate can do *everything* that the full dot executable can do.*
 
+Try this [demo](livebook://github.com/chgeuer/ex_dot/blob/main/demo.livemd).
 
 ## Installation
 
