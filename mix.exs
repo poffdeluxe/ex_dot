@@ -2,7 +2,7 @@ defmodule ExDotRust.MixProject do
   use Mix.Project
 
   @source_url "https://github.com/poffdeluxe/ex_dot"
-  @version "0.1.1-dev"
+  @version "0.1.1"
   @dev? String.ends_with?(@version, "-dev")
   @force_build? System.get_env("EX_DOT_BUILD") in ["1", "true"]
 
