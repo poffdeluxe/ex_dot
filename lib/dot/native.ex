@@ -13,9 +13,6 @@ defmodule Dot.Native do
     base_url: "#{github_url}/releases/download/v#{version}",
     version: version,
     targets: ~w(
-      x86_64-pc-windows-gnu
-      x86_64-pc-windows-msvc
-      x86_64-unknown-linux-gnu
       x86_64-apple-darwin
       aarch64-apple-darwin
     ),

@@ -1,6 +1,4 @@
 %{
-  "ex_dot-v0.1.0-nif-2.15-x86_64-pc-windows-gnu.dll.tar.gz" => "sha256:f9534dc2b88b83877362e56b2b2fb5e0da2ddeb636fac0375862108d92d231fb",
-  "ex_dot-v0.1.0-nif-2.15-x86_64-pc-windows-msvc.dll.tar.gz" => "sha256:e1f330da4e2ea4a4feb94b1614006b886af24253c7986a9ae37b57494cef87c5",
-  "libex_dot-v0.1.0-nif-2.15-x86_64-unknown-linux-gnu.so.tar.gz" => "sha256:e649545980f54e26d9e9ae8a3f6611210c271251a998c909c6c824202dbf412a",
-  "libex_dot-v0.1.0-nif-2.15-x86_64-unknown-linux-gnu.dll.tar.gz" => "sha256:e649545980f54e26d9e9ae8a3f6611210c271251a998c909c6c824202dbf412a",
+  "libex_dot-v0.1.1-nif-2.15-aarch64-apple-darwin.so.tar.gz" => "sha256:ca2619f71b5a9b11858df8914c79a769335cd0b16a7fe403395147e154af799e",
+  "libex_dot-v0.1.1-nif-2.15-x86_64-apple-darwin.so.tar.gz" => "sha256:de30c0e6a2cf8f47bd3eb7dc92f824b5f220f9ed960510d7df4ca6ce8551f6a4",
 }
