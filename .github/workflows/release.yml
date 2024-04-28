@@ -29,9 +29,11 @@ jobs:
       matrix:
         nif: ["2.15"] # https://github.com/philss/rustler_precompiled/blob/main/PRECOMPILATION_GUIDE.md#using-features-to-control-nif-version-in-rustler-v029-and-above
         job:
-          - { target: x86_64-unknown-linux-gnu, os: ubuntu-20.04 }
-          - { target: x86_64-pc-windows-gnu,    os: windows-2022 }
-          - { target: x86_64-pc-windows-msvc,   os: windows-2022 }
+          #- { target: x86_64-unknown-linux-gnu, os: ubuntu-20.04 }
+          #- { target: x86_64-pc-windows-gnu,    os: windows-2022 }
+          #- { target: x86_64-pc-windows-msvc,   os: windows-2022 }
+          - { target: aarch64-apple-darwin, os: macos-11 }
+          - { target: x86_64-apple-darwin, os: macos-11 }
     steps:
       - name: Checkout source code
         uses: actions/checkout@v3
